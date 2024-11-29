@@ -38,6 +38,9 @@ app.get('/api/download',async (req, res)=>{
 //delpoye react in node
 app.use(express.static(path.join(__dirname, 'build')));
 app.use("/assets",express.static('./public/static'));
+
+
+//build test
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
