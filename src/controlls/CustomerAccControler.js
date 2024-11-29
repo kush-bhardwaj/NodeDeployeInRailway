@@ -9,6 +9,7 @@ const { genPassword, commparePassowrd } = require('../utils/EncrypPassword');
 const VerifyAccount = require('../utils/Mail')
 exports.signup = async (req, res, next) => {
     try {
+        const PORT = process.env.PORT || 5000
         const signupData = {
             custumerName: req.body.name,
             custumerEmail: req.body.email,
@@ -22,7 +23,7 @@ exports.signup = async (req, res, next) => {
                     <body>
                             <h1 style="color:red;">${resData.custumerName}</h1>
                             <p>Welcome ${resData.custumerName}</p>
-                            <span>click on link to verify <a href='http://192.168.0.3:5000/api/auth/customer/verify/${resData._id}'>Verify here<a/></span>
+                            <span>click on link to verify <a href='http://192.168.0.3:${PORT}/api/auth/customer/verify/${resData._id}'>Verify here<a/></span>
                     </body>
             </html>`
             VerifyAccount(resData.custumerEmail, "Signup Success", " ", sentHTML)
